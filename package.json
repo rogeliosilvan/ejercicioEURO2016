@@ -1,0 +1,17 @@
+{
+  "name": "ejercicioeuro2016",
+  "version": "1.0.0",
+  "description": "ejercicio de Eurocopa 2016 de test",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava -v -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ava": "1.0.0-rc.1"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
