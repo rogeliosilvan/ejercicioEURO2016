@@ -53,18 +53,30 @@ class EuroDB{
         playerTeamFiltered = playerTeam.sheets.Players.filter(player => player[Object.keys(ObjNamePosition).toString()] === ObjNamePosition[Object.keys(ObjNamePosition).toString()])
         // console.log("Esto es: playerTeamFiltered");
         // console.log(playerTeamFiltered.length)
-        return playerTeamFiltered.length <= 0 ? null : playerTeamFiltered[0]
+        //return playerTeamFiltered.length <= 0 ? null : playerTeamFiltered[0]
+        return playerTeamFiltered.length <= 0 ? null : playerTeamFiltered
     }
 
-    async findPlayerAll(ObjNamePosition, team){
-        // let playerTeamFiltered = null;
-        // if(!ObjNamePosition) return null;
-        // const playerTeam = await this.getPlayersByTeam(team);
-        // playerTeamFiltered = playerTeam.sheets.Players.filter(player => player[Object.keys(ObjNamePosition).toString()] === ObjNamePosition[Object.keys(ObjNamePosition).toString()])
-        // // console.log("Esto es: playerTeamFiltered");
-        // // console.log(playerTeamFiltered.length)
-        // return playerTeamFiltered.length <= 0 ? null : playerTeamFiltered[0]
-    }    
+    async findPlayerAll(ObjNamePosition){
+        
+        let playerTeam = await this.findPlayer(ObjNamePosition, 'italy');
+        return playerTeam.length <= 0 ? null : playerTeam
+    }  
+    
+    // async findPlayerAll_v2(ObjNamePosition){
+        
+    //     let playerAllTeams = null;
+    //     playerAllTeams.push(this.getTeams().map(function (member) {
+    //         //  return member.name 
+    
+    //         let playerTeam = await this.findPlayer(ObjNamePosition, member);
+    //         return playerTeam.length <= 0 ? null : playerTeam            
+    //     }))
+    
+    //     return playerAllTeams.length <= 0 ? null : playerAllTeams   
+    // }        
+
+      
 
 }
 
