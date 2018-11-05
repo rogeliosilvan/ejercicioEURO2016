@@ -12,6 +12,7 @@ test('getTeams should return a array ', t => {
 
 test('getTeams should return a array of 24 elements ', t => {
     const teams = EuroDB.getTeams();
+    // t.is(teams.length,24);
     t.is(teams.length,24);
 })
 
@@ -73,9 +74,12 @@ test('findPlayer should return null if the object name o position is not informe
 
 test('findPlayerAll should return all the players with name or position equal or empty array if haven´t found', async t => {
     let player = await EuroDB.findPlayerAll({position: "Goalkeeper"})
+    console.log("player_____________________________________________");
+    console.log("___________________________________________________");
+    console.log("___________________________________________________");
     console.log(player);
     //t.is(typeof player,'object');
-    t.is(player[0].position,'Goalkeeper');
+    t.is(player[1].position,'Goalkeeper');
     
 })
 

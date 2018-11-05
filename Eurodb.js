@@ -3,6 +3,9 @@ const axios = require('axios')
 class EuroDB{
 
     constructor(){
+        // this.teams = ["austria",
+        // "belgium",
+        // "spain"]
         this.teams = ["albania",
         "austria",
         "belgium",
@@ -57,24 +60,36 @@ class EuroDB{
         return playerTeamFiltered.length <= 0 ? null : playerTeamFiltered
     }
 
+    // async findPlayerAll(ObjNamePosition){
+        
+    //     let playerTeam = await this.findPlayer(ObjNamePosition, 'italy');
+    //     return playerTeam.length <= 0 ? null : playerTeam
+    // }  
+    
     async findPlayerAll(ObjNamePosition){
         
-        let playerTeam = await this.findPlayer(ObjNamePosition, 'italy');
-        return playerTeam.length <= 0 ? null : playerTeam
-    }  
-    
-    // async findPlayerAll_v2(ObjNamePosition){
+        let playerAllTeams;
         
-    //     let playerAllTeams = null;
-    //     playerAllTeams.push(this.getTeams().map(function (member) {
-    //         //  return member.name 
+        // playerAllTeams.push(this.getTeams().map(member => {
+        //     //  return member.name 
     
-    //         let playerTeam = await this.findPlayer(ObjNamePosition, member);
-    //         return playerTeam.length <= 0 ? null : playerTeam            
-    //     }))
+        //     playerTeam = await this.findPlayer(ObjNamePosition, member);
+        //     console.log(playerTeam);
+        //     return playerTeam.length <= 0 ? null : playerTeam            
+        // }))
+        
+        for(let i=0; i<this.getTeams().length; i++)
+        {
+            let playerTeam;
+            playerTeam = await this.findPlayer(ObjNamePosition, this.getTeams()[i]);
+            // console.log("playerTeam________:"+this.getTeams()[i]);
+            // console.log(playerTeam)
+            playerAllTeams = [playerAllTeams, ...playerTeam]
+            // playerAllTeams = playerTeam
+        }
     
-    //     return playerAllTeams.length <= 0 ? null : playerAllTeams   
-    // }        
+        return playerAllTeams.length <= 0 ? null : playerAllTeams
+    }        
 
       
 
