@@ -45,13 +45,13 @@ test('getPlayersByTeam should return null if the teams name is not found', async
 test('findPlayer should return the object named Iker Casillas from the spain team', async t => {
     let player = await EuroDB.findPlayer({name: "Iker Casillas"},'spain')
     // console.log(player);
-    t.is(player[0].name,'Iker Casillas');
+    t.is(player.name,'Iker Casillas');
 })
 
 test('findPlayer should return the object position Goalkeeper from the spain team', async t => {
     let player = await EuroDB.findPlayer({position: "Goalkeeper"},'spain')
     // console.log(player);
-    t.is(player[0].position,'Goalkeeper');
+    t.is(player.position,'Goalkeeper');
 })
 
 test('findPlayer should return null when not found this player', async t => {

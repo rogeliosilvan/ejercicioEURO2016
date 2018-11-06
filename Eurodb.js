@@ -52,12 +52,11 @@ class EuroDB{
     async findPlayer(ObjNamePosition, team){
         let playerTeamFiltered = null;
         if(!ObjNamePosition) return null;
+        let keyTeam = Object.keys(ObjNamePosition).toString()
         const playerTeam = await this.getPlayersByTeam(team);
-        playerTeamFiltered = playerTeam.sheets.Players.filter(player => player[Object.keys(ObjNamePosition).toString()] === ObjNamePosition[Object.keys(ObjNamePosition).toString()])
-        // console.log("Esto es: playerTeamFiltered");
-        // console.log(playerTeamFiltered.length)
-        //return playerTeamFiltered.length <= 0 ? null : playerTeamFiltered[0]
-        return playerTeamFiltered.length <= 0 ? null : playerTeamFiltered
+        playerTeamFiltered = playerTeam.sheets.Players.find(player => player[keyTeam] === ObjNamePosition[keyTeam])
+        console.log(playerTeamFiltered);
+        return playerTeamFiltered ? playerTeamFiltered : null
     }
 
     // async findPlayerAll(ObjNamePosition){
@@ -70,7 +69,7 @@ class EuroDB{
         
         let playerAllTeams;
         
-        // playerAllTeams.push(this.getTeams().map(member => {
+        // playerAllTeams.push(this.getTeams().map( async member => {
         //     //  return member.name 
     
         //     playerTeam = await this.findPlayer(ObjNamePosition, member);
@@ -84,7 +83,7 @@ class EuroDB{
             playerTeam = await this.findPlayer(ObjNamePosition, this.getTeams()[i]);
             // console.log("playerTeam________:"+this.getTeams()[i]);
             // console.log(playerTeam)
-            playerAllTeams = [playerAllTeams, ...playerTeam]
+            playerAllTeams = [playerAllTeams, playerTeam]
             // playerAllTeams = playerTeam
         }
     
